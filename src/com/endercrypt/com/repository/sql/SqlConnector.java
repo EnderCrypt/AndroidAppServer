@@ -50,9 +50,8 @@ public class SqlConnector implements Repository
 		return new BufferedReader(fileReader);
 	}
 
-	private void executeSqlScript(String name)
+	private String readSqlScript(String name)
 	{
-		// get the script
 		StringBuilder sqlScriptBuilder = new StringBuilder();
 		try (BufferedReader br = readResource("sql/" + name + ".sql"))
 		{
@@ -66,10 +65,15 @@ public class SqlConnector implements Repository
 		{
 			throw new RuntimeException(e);
 		}
-		// execute the script
+		return sqlScriptBuilder.toString();
+	}
+
+	private void executeSqlScript(String name)
+	{
+		String sqlScript = readSqlScript(name);
 		try (Statement statement = connection.createStatement())
 		{
-			statement.executeUpdate(sqlScriptBuilder.toString());
+			statement.executeUpdate(sqlScript);
 		}
 		catch (SQLException e)
 		{
