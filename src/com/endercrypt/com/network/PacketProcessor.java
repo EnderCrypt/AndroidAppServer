@@ -9,9 +9,9 @@ import com.endercrypt.com.util.ContainedThread;
 public class PacketProcessor extends ContainedThread
 {
 	private BlockingQueue<DatagramPacket> queue;
-	private Listener listener;
+	private AndroidServerListener listener;
 
-	public PacketProcessor(BlockingQueue<DatagramPacket> queue, Listener listener)
+	public PacketProcessor(BlockingQueue<DatagramPacket> queue, AndroidServerListener listener)
 	{
 		this.queue = queue;
 		this.listener = listener;

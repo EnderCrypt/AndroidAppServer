@@ -5,7 +5,7 @@ import java.io.InputStream;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 
-public interface Listener
+public interface AndroidServerListener
 {
 	public void start(DatagramSocket socket);
 

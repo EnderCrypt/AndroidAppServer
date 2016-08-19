@@ -9,12 +9,13 @@ import com.endercrypt.com.repository.sql.SqlConnector;
 
 public class Main
 {
+	private static final int PORT = 36963;
 	private static AndroidServer server;
 
 	public static void main(String[] args) throws SocketException, ClassNotFoundException, SQLException
 	{
-		System.out.println("Initialising server...");
-		server = new AndroidServer(36963);
+		System.out.println("Initialising server on port " + PORT + "...");
+		server = new AndroidServer(PORT);
 		System.out.println("Starting Sql...");
 		server.setListener(new StandardServer(new SqlConnector()));
 		System.out.println("Starting server...");

@@ -10,13 +10,13 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import com.endercrypt.com.exception.AndroidServerException;
-import com.endercrypt.com.network.Listener;
+import com.endercrypt.com.network.AndroidServerListener;
 import com.endercrypt.com.repository.ClientBeacon;
 import com.endercrypt.com.repository.Repository;
 import com.endercrypt.com.util.ByteUtil;
 import com.endercrypt.com.util.CountingHashMap;
 
-public class StandardServer implements Listener
+public class StandardServer implements AndroidServerListener
 {
 	private static final int TIMEOUT = 60;
 	private static final int API_KEY = 902_658_982;

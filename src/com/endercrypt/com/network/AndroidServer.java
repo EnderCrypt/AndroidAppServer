@@ -15,7 +15,7 @@ public class AndroidServer
 
 	private final int port;
 	private final DatagramSocket socket;
-	private Optional<Listener> listener = Optional.empty();
+	private Optional<AndroidServerListener> listener = Optional.empty();
 
 	private boolean alive = true;
 	private boolean running = false;
@@ -29,7 +29,7 @@ public class AndroidServer
 		socket = new DatagramSocket(port);
 	}
 
-	public void setListener(Listener listener)
+	public void setListener(AndroidServerListener listener)
 	{
 		this.listener = Optional.of(listener);
 	}
