@@ -17,6 +17,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.endercrypt.com.Main;
+import com.endercrypt.com.exception.AndroidRepositoryException;
 import com.endercrypt.com.repository.ClientBeacon;
 import com.endercrypt.com.repository.Repository;
 import com.endercrypt.com.util.ByteUtil;
@@ -63,7 +64,7 @@ public class SqlConnector implements Repository
 		}
 		catch (IOException e)
 		{
-			throw new RuntimeException(e);
+			throw new AndroidRepositoryException(e);
 		}
 		return sqlScriptBuilder.toString();
 	}
@@ -77,7 +78,7 @@ public class SqlConnector implements Repository
 		}
 		catch (SQLException e)
 		{
-			throw new RuntimeException(e);
+			throw new AndroidRepositoryException(e);
 		}
 	}
 
@@ -93,12 +94,13 @@ public class SqlConnector implements Repository
 				{
 					return resultSet.getInt(1);
 				}
-				throw new RuntimeException("Not a known beacon");
+				return -1;
+				//throw new AndroidRepositoryException("Not a known beacon");
 			}
 		}
 		catch (SQLException e)
 		{
-			throw new RuntimeException(e);
+			throw new AndroidRepositoryException(e);
 		}
 	}
 
@@ -118,7 +120,7 @@ public class SqlConnector implements Repository
 		}
 		catch (SQLException e)
 		{
-			throw new RuntimeException(e);
+			throw new AndroidRepositoryException(e);
 		}
 	}
 
@@ -144,11 +146,11 @@ public class SqlConnector implements Repository
 		}
 		catch (IOException e)
 		{
-			throw new RuntimeException(e);
+			throw new AndroidRepositoryException(e);
 		}
 		catch (SQLException e)
 		{
-			throw new RuntimeException(e);
+			throw new AndroidRepositoryException(e);
 		}
 		return null;
 	}
